@@ -1,6 +1,8 @@
 plugins {
     kotlin("jvm") version "2.3.21"
     application
+    id("org.jlleitschuh.gradle.ktlint") version "14.2.0"
+    idea
 }
 
 group = "nu.westlin"
@@ -50,4 +52,22 @@ tasks.jar {
     // Detta gör JAR-filen "fet" genom att inkludera alla bibliotek, vilket gör den enkel att flytta mellan mappar.
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
+}
+
+/**
+ * Säger åt IntelliJ att ladda ned javadoc och källkod.
+ */
+idea {
+    module {
+        isDownloadJavadoc = true
+        isDownloadSources = true
+    }
+}
+
+/*
+Om man får problem med en viss regel på bara ett eller kanske två ställen kan man slå av dem i koden mha ex.:
+@Suppress("ktlint:standard:function-signature")
+ */
+configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
+    verbose.set(true)
 }
