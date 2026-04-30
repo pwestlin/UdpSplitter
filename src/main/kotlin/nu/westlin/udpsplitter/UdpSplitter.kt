@@ -6,8 +6,9 @@ import java.net.InetAddress
 import java.net.SocketException
 
 fun main(args: Array<String>) {
-    if (args.size < 2) {
+    if (args.size < 3) {
         println("Användning: <lyssnarport> <målport1> <målport2> ... <målportN>")
+        println("Minst två lyssnarportar måste anges")
         return
     }
 
