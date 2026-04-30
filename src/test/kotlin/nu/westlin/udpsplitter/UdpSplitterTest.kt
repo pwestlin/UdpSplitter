@@ -1,6 +1,7 @@
 package nu.westlin.udpsplitter
 
 import org.awaitility.kotlin.await
+import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import java.net.DatagramPacket
 import java.net.DatagramSocket
@@ -8,13 +9,10 @@ import java.net.InetAddress
 import java.time.Duration
 import java.util.concurrent.ConcurrentHashMap
 import kotlin.concurrent.thread
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.RepeatedTest
 
 class UdpSplitterTest {
 
-    @RepeatedTest(100)
-    //@Test
+    @Test
     fun `test splitting`() {
         val listenPort = 15000
         val targetPorts = listOf(16000, 17000)
