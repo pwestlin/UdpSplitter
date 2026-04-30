@@ -1,2 +1,2 @@
 # UDP splitter
-Splits UDP-data from a port to two or more ports.
+Splits UDP-data from one port to two or more ports.
